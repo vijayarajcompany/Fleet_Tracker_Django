@@ -1,0 +1,44 @@
+{#{% extends "../static/templates/base.html" %}#}
+{% extends 'base.html' %}
+{% load static  %}
+{% block content  %}
+{#<h3>#}
+{#    <br>#}
+{#    <br>#}
+{#    <span> This is Home page </span>  <br>#}
+{#    <br>#}
+{#    <img src="{% static 'parkedtrucks.jpg' %}" width="200px"/>#}
+    {#<a href="{% url 'login' %}" >Login Page</a>#}
+{#    <br>#}
+{##}
+{#<div class="form-floating">#}
+{#      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">#}
+{#      <label for="floatingInput">Email address</label>#}
+{#    </div>#}
+{#</h3>#}
+        <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Job Detail</h1>
+            <img src="{% static 'parkedtrucks.jpg' %}" width="200px"/>
+{#          <img src="{{ job.image.url }}" height="300" />#}
+          <p>
+{#            <a href="{% url 'home' %}" class="btn btn-primary my-2">Back</a>#}
+          </p>
+        </div>
+      </section>
+
+        <ul>
+        {% for tsk in object_list %}
+            <li>{{ tsk.title }}</li>
+        {% endfor %}
+        </ul>
+
+
+
+    </main>
+{% endblock  %}
+
+
+
