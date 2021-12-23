@@ -19,8 +19,13 @@ from rest_framework.routers import DefaultRouter
 import tracker.views
 import tracker.API.views
 
+
+admin.site.site_header = "Fleet Tracker Admin"
+admin.site.site_title = "Fleet Tracker Admin "
+admin.site.index_title = "Welcome to Fleet Tracker"
 # router = DefaultRouter()
 # router.register(r'tasks', tracker.API.views.TaskListViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
