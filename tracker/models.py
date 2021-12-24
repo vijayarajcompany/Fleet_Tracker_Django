@@ -37,9 +37,9 @@ class SubDepartment(models.Model):
 
 
 class Employee(models.Model):
-    emp_id = models.SmallIntegerField()
-    emirates_id = models.SmallIntegerField()
+    emp_id = models.PositiveIntegerField()
+    emirates_id = models.PositiveIntegerField()
     name = models.CharField(max_length=100)
-    contact_number = models.SmallIntegerField()
+    contact_number = models.PositiveIntegerField()
     active = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)

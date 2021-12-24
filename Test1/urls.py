@@ -33,6 +33,7 @@ urlpatterns = [
     path('api/v1/task/', tracker.API.views.TaskList.as_view()),
     path('api/v1/subtask/', tracker.API.views.SubTaskList.as_view()),
     path('api/v1/employees/', tracker.API.views.EmployeeList.as_view()),
+    path('api/v1/employees/new', tracker.API.views.EmployeeCreate.as_view()),
     path('api/v1/emirates/', tracker.API.views.EmiratesList.as_view()),
     path('api/v1/department/', tracker.API.views.DepartmentList.as_view()),
     path('api/v1/subdepartment/', tracker.API.views.SubDepartmentList.as_view()),

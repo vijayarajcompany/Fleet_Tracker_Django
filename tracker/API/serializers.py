@@ -35,7 +35,7 @@ class EmiratesSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ('id', 'name', 'emirates_id', 'contact_number', 'active')
+        fields = ('id', 'emp_id', 'name', 'emirates_id', 'contact_number', 'active')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -54,7 +54,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
 class SubDepartmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Department
+        model = SubDepartment
         fields = ('id', 'name')
 
     def to_representation(self, instance):
