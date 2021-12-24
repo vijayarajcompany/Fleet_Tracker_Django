@@ -43,10 +43,3 @@ class Employee(models.Model):
     contact_number = models.SmallIntegerField()
     active = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)
-
-# class Vehicle(models.Model):
-#     name = models.CharField(max_length=100)
-#     created = models.DateTimeField(auto_now_add=True)
-
-
-# taskid = models.IntegerField()
