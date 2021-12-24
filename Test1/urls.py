@@ -31,6 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tracker.urls')),
     path('api/v1/task/', tracker.API.views.TaskList.as_view()),
+    path('api/v1/subtask/', tracker.API.views.SubTaskList.as_view()),
+    path('api/v1/emirates/', tracker.API.views.EmiratesList.as_view()),
 ]
 
 # path('', include(router.urls)),

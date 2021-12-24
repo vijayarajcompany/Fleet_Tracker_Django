@@ -8,9 +8,8 @@ from rest_framework.generics import ListAPIView, CreateAPIView, \
 
 from rest_framework import viewsets
 
-from tracker.models import Task
-from tracker.API.serializers import TaskSerializer
-
+from tracker.models import Task,SubTask, Emirates
+from tracker.API.serializers import TaskSerializer,SubTaskSerializer, EmiratesSerializer
 
 # class TaskListViewSet(viewsets.ModelViewSet):
 #     queryset = Task.objects.all()
@@ -19,3 +18,12 @@ from tracker.API.serializers import TaskSerializer
 class TaskList(ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+class SubTaskList(ListAPIView):
+    queryset = SubTask.objects.all()
+    serializer_class = SubTaskSerializer
+
+class EmiratesList(ListAPIView):
+    queryset = Emirates.objects.all()
+    serializer_class = EmiratesSerializer
+
