@@ -56,3 +56,23 @@ class Employee(models.Model):
     contact_number = models.PositiveIntegerField()
     active = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)
+
+
+class Part(models.Model):
+    name = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Vehicle(models.Model):
+    name = models.CharField(max_length=100)
+    part = models.ManyToManyField('Part')
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class VehicleType(models.Model):
+    name = models.CharField(max_length=100)
+    vehicle_id = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name="vehicle")
+    created = models.DateTimeField(auto_now_add=True)
