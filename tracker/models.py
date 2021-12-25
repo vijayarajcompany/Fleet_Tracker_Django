@@ -1,7 +1,20 @@
 from django.db import models
+import base64
 
 
 # Create your models here.
+class BinaryPhoto(models.Model):
+    name = models.CharField(max_length=100)
+    binaryphoto = models.BinaryField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class Base64Photo(models.Model):
+    name = models.CharField(max_length=100)
+    basephoto = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
 class Task(models.Model):
     name = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
@@ -37,8 +50,8 @@ class SubDepartment(models.Model):
 
 
 class Employee(models.Model):
-    emp_id = models.PositiveIntegerField()
-    emirates_id = models.PositiveIntegerField()
+    emp_id = models.PositiveIntegerField(primary_key=True)
+    emirates_id = models.PositiveIntegerField(unique=True, null=False)
     name = models.CharField(max_length=100)
     contact_number = models.PositiveIntegerField()
     active = models.BooleanField()

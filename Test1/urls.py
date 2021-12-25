@@ -30,12 +30,26 @@ admin.site.index_title = "Welcome to Fleet Tracker"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tracker.urls')),
+
+
+    # API
     path('api/v1/task/', tracker.API.views.TaskList.as_view()),
     path('api/v1/subtask/', tracker.API.views.SubTaskList.as_view()),
     path('api/v1/employees/', tracker.API.views.EmployeeList.as_view()),
+    # /api/v1/employees/?emp_id=13578
+    path('api/v1/employees/?emp_id=<int:emp_id>', tracker.API.views.EmployeeList.as_view()),
     path('api/v1/employees/new', tracker.API.views.EmployeeCreate.as_view()),
+
+    path('api/v1/basephoto/', tracker.API.views.BasePhotoList.as_view()),
+    path('api/v1/basephoto/new', tracker.API.views.BasePhotoCreate.as_view()),
+
+    path('api/v1/binaryphoto/', tracker.API.views.BinaryPhotoList.as_view()),
+    path('api/v1/binaryphoto/new', tracker.API.views.BinaryPhotoCreate.as_view()),
+
     path('api/v1/emirates/', tracker.API.views.EmiratesList.as_view()),
     path('api/v1/department/', tracker.API.views.DepartmentList.as_view()),
     path('api/v1/subdepartment/', tracker.API.views.SubDepartmentList.as_view()),
 ]
+
+
 

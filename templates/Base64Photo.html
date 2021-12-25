@@ -1,0 +1,37 @@
+{#{% extends "../static/templates/base.html" %}#}
+{% extends 'base.html' %}
+{% load static  %}
+{% block content  %}
+    <br>
+    <br>
+    <br>
+
+<form action="{% url 'downloadexcel' %}" method="post">
+{% csrf_token %}
+
+
+ <button type="submit" name='mybtn2' value={{excel_path}}>Download results in Excel</button>
+
+ </form>
+
+
+
+    <br>
+    <br>
+    <h3> this is heading </h3>
+       <ul>
+        {% for tsk in object_list %}
+            <li>{{ tsk.name }}</li>
+            <img src="data:image/png;base64,{{ tsk.basephoto  }}" width="200px"/>
+        {% endfor %}
+        </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock  %}
+
+
+

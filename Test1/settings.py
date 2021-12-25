@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'tracker',
     'rest_framework',
     'django_filters',
+    'xlwt'
 ]
 
 MIDDLEWARE = [
