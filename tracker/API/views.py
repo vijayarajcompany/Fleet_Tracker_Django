@@ -10,7 +10,6 @@ from tracker.models import *
 from tracker.API.serializers import *
 
 
-
 class BinaryPhotoList(ListAPIView):
     queryset = BinaryPhoto.objects.all()
     serializer_class = BinaryPhotoSerializer
@@ -23,6 +22,7 @@ class BasePhotoList(ListAPIView):
 
 class BinaryPhotoCreate(CreateAPIView):
     serializer_class = BinaryPhotoSerializer
+
     def create(self, request, *args, **kwargs):
         name = request.data.get('name')
         binaryphoto = request.data.get('binaryphoto')
@@ -81,3 +81,85 @@ class DepartmentList(ListAPIView):
 class SubDepartmentList(ListAPIView):
     queryset = SubDepartment.objects.all()
     serializer_class = SubDepartmentSerializer
+
+
+class UserList(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('name',)
+    search_fields = ('name',)
+
+
+class FuelCardList(ListAPIView):
+    queryset = FuelCard.objects.all()
+    serializer_class = FuelCardSerializer
+
+
+class ModelList(ListAPIView):
+    queryset = Model.objects.all()
+    serializer_class = ModelSerializer
+
+
+class BrandList(ListAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+
+
+class BrandSupplierList(ListAPIView):
+    queryset = BrandSupplier.objects.all()
+    serializer_class = BrandSupplierSerializer
+
+
+class VehicleDetailList(ListAPIView):
+    queryset = VehicleDetail.objects.all()
+    serializer_class = VehicleDetailSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('plate_no',)
+    search_fields = ('plate_no',)
+
+
+class VehicleDetailCreate(CreateAPIView):
+    serializer_class = VehicleDetailSerializer
+
+    def create(self, request, *args, **kwargs):
+        plate_no = request.data.get('plate_no')
+        supplier_id = request.data.get('supplier_id')
+        fuelcard_id = request.data.get('fuelcard_id')
+        brandsupplier_id = request.data.get('brandsupplier_id')
+        emirates_id = request.data.get('emirates_id')
+        model_id = request.data.get('model_id')
+        type_id = request.data.get('type_id')
+        subdepartment_id = request.data.get('subdepartment_id')
+        model_year = request.data.get('ModelYear')
+        equipment = request.data.get('Equipment')
+        chess = request.data.get('Chess')
+        platecode = request.data.get('PlateCode')
+        contract_start_date = request.data.get('contract_start_date')
+        contract_end_date = request.data.get('contract_end_date')
+        location = request.data.get('location')
+        return super().create(request, *args, **kwargs)
+
+
+class FleetToUserList(ListAPIView):
+    queryset = FleetToUser.objects.all()
+    serializer_class = FleetToUserSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('plate_number',)
+    search_fields = ('plate_number',)
+
+    def create(self, request, *args, **kwargs):
+        plate_no = request.data.get('plate_no')
+        emirates = request.data.get('emirates')
+        plate_code = request.data.get('plate_code')
+        plate_number = request.data.get('plate_number')
+        km = request.data.get('km')
+        fuel_tank = request.data.get('fuel_tank')
+        entry_date = request.data.get('EntryDate')
+        time = request.data.get('Time')
+        employee_id = request.data.get('employee_id')
+        parts = request.data.get('parts')
+        license_code = request.data.get('license_code')
+        comments = request.data.get('comments')
+
+        return super().create(request, *args, **kwargs)

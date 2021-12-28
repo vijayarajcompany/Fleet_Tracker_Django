@@ -4,6 +4,10 @@ from . import models
 
 
 # Register your models here.
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
 class TaskAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
@@ -44,6 +48,14 @@ class VehiclePartAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
+class VehicleDetailAdmin(admin.ModelAdmin):
+    list_display = ('plate_no',)
+
+
+class FleetToUserAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+
 admin.site.register(models.Task, TaskAdmin)
 admin.site.register(models.SubTask, SubTaskAdmin)
 admin.site.register(models.Employee, EmployeeAdmin)
@@ -54,3 +66,7 @@ admin.site.register(models.SubDepartment, SubDepartmentAdmin)
 admin.site.register(models.Vehicle, VehicleAdmin)
 admin.site.register(models.VehicleType, VehicleTypeAdmin)
 admin.site.register(models.Part, VehiclePartAdmin)
+
+admin.site.register(models.User, UserAdmin)
+admin.site.register(models.VehicleDetail, VehicleDetailAdmin)
+admin.site.register(models.FleetToUser, FleetToUserAdmin)

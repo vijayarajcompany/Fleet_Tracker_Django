@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from tracker.models import *
 
+
 class BinaryPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = BinaryPhoto
@@ -75,6 +76,79 @@ class SubDepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubDepartment
         fields = ('id', 'name')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'password')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class FuelCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FuelCard
+        fields = ('id', 'name')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class ModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Model
+        fields = ('id', 'name')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ('id', 'name')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class BrandSupplierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BrandSupplier
+        fields = ('id', 'name', 'brand_id')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class VehicleDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VehicleDetail
+        fields = (
+        'plate_no', 'supplier_id', 'fuelcard_id', 'brandsupplier_id', 'emirates_id', 'model_id', 'type_id',
+        'subdepartment_id', 'model_year', 'equipment', 'chess', 'platecode', 'contract_start_date', 'contract_end_date',
+        'location')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
+class FleetToUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FleetToUser
+        fields = ('id', 'plate_no', 'emirates','plate_code', 'km', 'fuel_tank', 'entry_date', 'time','employee_id','parts', 'license_code', 'comments' )
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
