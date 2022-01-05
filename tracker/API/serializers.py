@@ -2,6 +2,16 @@ from rest_framework import serializers
 from tracker.models import *
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('name', 'password')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
+
 class BinaryPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = BinaryPhoto
@@ -82,14 +92,14 @@ class SubDepartmentSerializer(serializers.ModelSerializer):
         return data
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'name', 'password')
-
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        return data
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('id', 'name', 'password')
+#
+#     def to_representation(self, instance):
+#         data = super().to_representation(instance)
+#         return data
 
 
 class FuelCardSerializer(serializers.ModelSerializer):
@@ -136,9 +146,10 @@ class VehicleDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = VehicleDetail
         fields = (
-        'plate_no', 'supplier_id', 'fuelcard_id', 'brandsupplier_id', 'emirates_id', 'model_id', 'type_id',
-        'subdepartment_id', 'model_year', 'equipment', 'chess', 'platecode', 'contract_start_date', 'contract_end_date',
-        'location')
+            'plate_no', 'supplier_id', 'fuelcard_id', 'brandsupplier_id', 'emirates_id', 'model_id', 'type_id',
+            'subdepartment_id', 'model_year', 'equipment', 'chess', 'platecode', 'contract_start_date',
+            'contract_end_date',
+            'location')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -148,7 +159,9 @@ class VehicleDetailSerializer(serializers.ModelSerializer):
 class FleetToUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = FleetToUser
-        fields = ('id', 'plate_no', 'emirates','plate_code', 'km', 'fuel_tank', 'entry_date', 'time','employee_id','parts', 'license_code', 'comments' )
+        fields = (
+        'id', 'plate_no', 'emirates', 'plate_code', 'km', 'fuel_tank', 'entry_date', 'time', 'employee_id', 'parts',
+        'license_code', 'comments')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)

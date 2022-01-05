@@ -10,6 +10,10 @@ from tracker.models import *
 from tracker.API.serializers import *
 
 
+# class UserList(ListAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
 class BinaryPhotoList(ListAPIView):
     queryset = BinaryPhoto.objects.all()
     serializer_class = BinaryPhotoSerializer
@@ -87,7 +91,7 @@ class UserList(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('name',)
+    filter_fields = ('name','password')
     search_fields = ('name',)
 
 
