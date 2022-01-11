@@ -27,7 +27,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'tracker',
     'rest_framework',
     'django_filters',
-    'xlwt'
-]
+    'xlwt',
+    "sslserver",
+
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

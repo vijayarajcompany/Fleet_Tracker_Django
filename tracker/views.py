@@ -54,11 +54,6 @@ class Base64PhotoView(ListView):
         return response
 
 
-
-
-
-
-
 class HomeView(ListView):
     # var1 = 0
     # var2 = 1
