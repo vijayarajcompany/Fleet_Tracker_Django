@@ -8,6 +8,17 @@ import xlwt
 from django.http import HttpResponse
 
 
+def handler404(request, exception=None):
+    return render(request, '404.html', status=404)
+
+
+# def response_error_handler(request, exception=None):
+#     return HttpResponse('Error handler content', status=403)
+
+# def handler500(request):
+#     return render(request, '500.html', status=500)
+
+
 # Create your Class views here.
 
 class Base64PhotoView(ListView):

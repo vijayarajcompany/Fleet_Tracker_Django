@@ -61,7 +61,6 @@ class EmiratesSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         return data
 
-
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee

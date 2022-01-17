@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -8,6 +9,11 @@ from rest_framework import viewsets
 
 from tracker.models import *
 from tracker.API.serializers import *
+
+def handler404(request):
+    return render(request, '404.html', status=404)
+def handler500(request):
+    return render(request, '500.html', status=500)
 
 
 # class UserList(ListAPIView):

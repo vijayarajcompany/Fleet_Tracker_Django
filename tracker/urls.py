@@ -5,7 +5,7 @@ from django.conf.urls import static
 import tracker.API.views
 
 urlpatterns = [
-    # path('', views.HomeView.as_view()),
+    path('', views.HomeView.as_view()),
     path('home', views.HomeView.as_view()),
     path('login', views.LoginView.as_view()),
     path('photo', views.Base64PhotoView.as_view()),
