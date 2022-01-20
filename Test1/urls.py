@@ -45,6 +45,7 @@ urlpatterns = [
     path('api/v1/subdepartment/', tracker.API.views.SubDepartmentList.as_view()),
     path('api/v1/employees/', tracker.API.views.EmployeeList.as_view()),
     path('api/v1/vehicledetail/', tracker.API.views.VehicleDetailList.as_view()),
+    path('api/v1/vehicle/', tracker.API.views.VehicleList.as_view()),
     # GET By ID
     # /api/v1/employees/?emp_id=13578
     path('api/v1/employees/?emp_id=<int:emp_id>', tracker.API.views.EmployeeList.as_view()),

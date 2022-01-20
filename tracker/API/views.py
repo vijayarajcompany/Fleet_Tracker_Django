@@ -10,8 +10,11 @@ from rest_framework import viewsets
 from tracker.models import *
 from tracker.API.serializers import *
 
+
 def handler404(request):
     return render(request, '404.html', status=404)
+
+
 def handler500(request):
     return render(request, '500.html', status=500)
 
@@ -97,7 +100,7 @@ class UserList(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('name','password')
+    filter_fields = ('name', 'password')
     search_fields = ('name',)
 
 
@@ -109,6 +112,11 @@ class FuelCardList(ListAPIView):
 class ModelList(ListAPIView):
     queryset = Model.objects.all()
     serializer_class = ModelSerializer
+
+
+class VehicleList(ListAPIView):
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer
 
 
 class BrandList(ListAPIView):

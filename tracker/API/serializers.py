@@ -100,6 +100,15 @@ class SubDepartmentSerializer(serializers.ModelSerializer):
 #         data = super().to_representation(instance)
 #         return data
 
+class VehicleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicle
+        fields = ('name', 'part')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
+
 
 class FuelCardSerializer(serializers.ModelSerializer):
     class Meta:

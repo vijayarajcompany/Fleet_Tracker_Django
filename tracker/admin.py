@@ -4,6 +4,11 @@ from . import models
 
 
 # Register your models here.
+
+class ModelAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
@@ -68,5 +73,6 @@ admin.site.register(models.VehicleType, VehicleTypeAdmin)
 admin.site.register(models.Part, VehiclePartAdmin)
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Model, ModelAdmin)
 admin.site.register(models.VehicleDetail, VehicleDetailAdmin)
 admin.site.register(models.FleetToUser, FleetToUserAdmin)

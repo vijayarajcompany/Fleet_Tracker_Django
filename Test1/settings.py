@@ -23,7 +23,7 @@ SECRET_KEY = 'django-insecure-25aat1y8n7ohypl5op6^(9a_!+qx)*%h=my9m7zsbr*apyw9sv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','drccustsales.pepsidrc.ae','drcadjust.pepsidrc.ae']
 
 # Application definition
 
