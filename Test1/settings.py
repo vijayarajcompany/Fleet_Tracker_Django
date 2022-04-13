@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_filters',
     'xlwt',
-    'sslserver'
+
 )
 
 MIDDLEWARE = [

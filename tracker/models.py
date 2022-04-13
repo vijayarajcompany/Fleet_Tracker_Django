@@ -20,12 +20,29 @@ class FuelCard(models.Model):
         return self.name
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=50)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Model(models.Model):
     name = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
+
+# class SubModel(models.Model):
+#     name = models.CharField(max_length=50)
+#     model_id = models.ForeignKey(Model, on_delete=models.CASCADE, related_name="submodel")
+#     created = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Brand(models.Model):
@@ -155,25 +172,39 @@ class VehicleType(models.Model):
 
 
 class VehicleDetail(models.Model):
-    plate_no = models.PositiveIntegerField(primary_key=True)
-    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE, related_name="suppliers")
-    fuelcard_id = models.ForeignKey(FuelCard, on_delete=models.CASCADE, related_name="fuelcards")
-    brandsupplier_id = models.ForeignKey(BrandSupplier, on_delete=models.CASCADE, related_name="brands")
-    emirates_id = models.ForeignKey(Emirates, on_delete=models.CASCADE, related_name="emirates")
-    model_id = models.ForeignKey(Model, on_delete=models.CASCADE, related_name="models")
-    type_id = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="vehicletype")
-    subdepartment_id = models.ForeignKey(SubDepartment, on_delete=models.CASCADE, related_name="subdepartment")
-    model_year = models.CharField(max_length=4)
+    plate_no = models.PositiveIntegerField()
+    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE, related_name="suppliers",
+                                    verbose_name="Supplier")
+    fuelcard_id = models.ForeignKey(FuelCard, on_delete=models.CASCADE, related_name="fuelcards",
+                                    verbose_name="Fuel Card")
+    brandsupplier_id = models.ForeignKey(BrandSupplier, on_delete=models.CASCADE, related_name="brands",
+                                         verbose_name="Brand Supplier")
+    emirates_id = models.ForeignKey(Emirates, on_delete=models.CASCADE, related_name="emirates",
+                                    verbose_name="Emirates")
+    model_id = models.ForeignKey(Model, on_delete=models.CASCADE, related_name="models",
+                                 verbose_name="Model")
+
+    type_id = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="vehicletype",
+                                verbose_name="Type")
+    subdepartment_id = models.ForeignKey(SubDepartment, on_delete=models.CASCADE, related_name="subdepartment",
+                                         verbose_name="Sub Department")
+    # model_year = models.CharField(max_length=4)
+    model_year = models.PositiveIntegerField()
     equipment = models.CharField(max_length=30)
+    # equipment = models.PositiveIntegerField()
     chess = models.CharField(max_length=50)
     platecode = models.CharField(max_length=10)
+    # platecode = models.PositiveIntegerField()
     contract_start_date = models.DateField()
     contract_end_date = models.DateField()
-    location = models.CharField(max_length=40)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="location")
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = (('plate_no', 'emirates_id', 'platecode'),)
+
     def __str__(self):
-        return self.plate_number
+        return str(self.plate_no)
 
 
 class FleetToUser(models.Model):

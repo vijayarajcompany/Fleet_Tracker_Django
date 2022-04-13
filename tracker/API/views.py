@@ -19,6 +19,11 @@ def handler500(request):
     return render(request, '500.html', status=500)
 
 
+class PartsList(ListAPIView):
+    queryset = Part.objects.all()
+    serializer_class = VehiclePartSerializer
+
+
 # class UserList(ListAPIView):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
@@ -129,6 +134,14 @@ class BrandSupplierList(ListAPIView):
     serializer_class = BrandSupplierSerializer
 
 
+# class VehicleDetailList(ListAPIView):
+#     queryset = VehicleDetail.objects.all()
+#     serializer_class = VehicleDetailSerializer
+#     filter_backends = (DjangoFilterBackend, SearchFilter)
+#     filter_fields = ('plate_no',)
+#     search_fields = ('plate_no',)
+
+
 class VehicleDetailList(ListAPIView):
     queryset = VehicleDetail.objects.all()
     serializer_class = VehicleDetailSerializer
@@ -137,16 +150,17 @@ class VehicleDetailList(ListAPIView):
     search_fields = ('plate_no',)
 
 
+# model_id = request.data.get('model_id')
+
 class VehicleDetailCreate(CreateAPIView):
     serializer_class = VehicleDetailSerializer
 
     def create(self, request, *args, **kwargs):
         plate_no = request.data.get('plate_no')
-        supplier_id = request.data.get('supplier_id')
+        supplier = request.data.get('supplier_id')
         fuelcard_id = request.data.get('fuelcard_id')
         brandsupplier_id = request.data.get('brandsupplier_id')
         emirates_id = request.data.get('emirates_id')
-        model_id = request.data.get('model_id')
         type_id = request.data.get('type_id')
         subdepartment_id = request.data.get('subdepartment_id')
         model_year = request.data.get('ModelYear')

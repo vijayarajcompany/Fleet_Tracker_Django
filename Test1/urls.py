@@ -27,11 +27,11 @@ admin.site.index_title = "Welcome to Fleet Tracker"
 
 handler404 = tracker.views.handler404
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tracker.urls')),
 
+    path('api/v1/parts/', tracker.API.views.PartsList.as_view()),
     path('api/v1/users/', tracker.API.views.UserList.as_view()),
     path('api/v1/task/', tracker.API.views.TaskList.as_view()),
     path('api/v1/subtask/', tracker.API.views.SubTaskList.as_view()),
