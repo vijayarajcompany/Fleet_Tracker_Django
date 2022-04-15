@@ -140,6 +140,14 @@ class LocationSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         return data
 
+class FleetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fleet
+        fields = ('id', 'serialno','km')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
 
 class ModelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -188,8 +196,7 @@ class BrandSupplierSerializer(serializers.ModelSerializer):
 class VehicleDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = VehicleDetail
-        fields = (
-            'id', 'plate_no', 'emirates_id', 'platecode')
+        fields = ('id', 'plate_no', 'emirates_id', 'platecode','fleet_id')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)

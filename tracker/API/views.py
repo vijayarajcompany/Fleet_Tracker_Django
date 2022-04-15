@@ -24,6 +24,10 @@ class PartsList(ListAPIView):
     serializer_class = VehiclePartSerializer
 
 
+class FleetList(ListAPIView):
+    queryset = Fleet.objects.all()
+    serializer_class = FleetSerializer
+
 # class UserList(ListAPIView):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer

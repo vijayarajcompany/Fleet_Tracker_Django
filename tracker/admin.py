@@ -8,6 +8,7 @@ from . import models
 class ModelAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+
 # class SubModelAdmin(admin.ModelAdmin):
 #     list_display = ('name',)
 
@@ -55,6 +56,10 @@ class VehicleAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
+class FleetAdmin(admin.ModelAdmin):
+    list_display = ('serialno',)
+
+
 class VehicleTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
@@ -66,7 +71,7 @@ class VehiclePartAdmin(admin.ModelAdmin):
 class VehicleDetailAdmin(admin.ModelAdmin):
     list_display = (
         'plate_no', 'emirates_id', 'platecode', 'supplier_id', 'fuelcard_id', 'brandsupplier_id',
-         'type_id',
+        'type_id', 'fleet_id',
         'subdepartment_id', 'model_year', 'equipment', 'chess', 'contract_start_date',
         'contract_end_date',
         'location')
@@ -84,6 +89,7 @@ class LocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'created')
 
 
+admin.site.register(models.Fleet, FleetAdmin)
 admin.site.register(models.Task, TaskAdmin)
 admin.site.register(models.SubTask, SubTaskAdmin)
 admin.site.register(models.Employee, EmployeeAdmin)
@@ -103,6 +109,3 @@ admin.site.register(models.Model, ModelAdmin)
 # admin.site.register(models.SubModel, SubModelAdmin)
 admin.site.register(models.VehicleDetail, VehicleDetailAdmin)
 admin.site.register(models.FleetToUser, FleetToUserAdmin)
-
-
-

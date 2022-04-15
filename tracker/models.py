@@ -36,11 +36,21 @@ class Model(models.Model):
         return self.name
 
 
+class Fleet(models.Model):
+    serialno = models.CharField(max_length=50)
+    km = models.PositiveIntegerField(unique=True, null=False)
+    active = models.BooleanField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.serialno)
+
+
 # class SubModel(models.Model):
 #     name = models.CharField(max_length=50)
 #     model_id = models.ForeignKey(Model, on_delete=models.CASCADE, related_name="submodel")
 #     created = models.DateTimeField(auto_now_add=True)
-#
+
 #     def __str__(self):
 #         return self.name
 
@@ -188,6 +198,9 @@ class VehicleDetail(models.Model):
                                 verbose_name="Type")
     subdepartment_id = models.ForeignKey(SubDepartment, on_delete=models.CASCADE, related_name="subdepartment",
                                          verbose_name="Sub Department")
+
+    fleet_id = models.ForeignKey(Fleet, null=True, on_delete=models.SET_NULL, related_name="fleet",
+                                 verbose_name="Fleet")
     # model_year = models.CharField(max_length=4)
     model_year = models.PositiveIntegerField()
     equipment = models.CharField(max_length=30)
