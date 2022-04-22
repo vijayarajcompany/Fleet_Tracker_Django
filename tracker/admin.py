@@ -31,6 +31,8 @@ class EmployeeAdmin(admin.ModelAdmin):
 class EmirateAdmin(admin.ModelAdmin):
     list_display = ('name', 'code')
 
+class LicenseAdmin(admin.ModelAdmin):
+    list_display = ('name', 'code')
 
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -94,6 +96,7 @@ admin.site.register(models.Task, TaskAdmin)
 admin.site.register(models.SubTask, SubTaskAdmin)
 admin.site.register(models.Employee, EmployeeAdmin)
 admin.site.register(models.Emirates, EmirateAdmin)
+admin.site.register(models.License, LicenseAdmin)
 admin.site.register(models.FuelCard, FuelCardAdmin)
 admin.site.register(models.Supplier, SupplierAdmin)
 admin.site.register(models.Department, DepartmentAdmin)

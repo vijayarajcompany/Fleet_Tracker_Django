@@ -74,6 +74,9 @@ class EmiratesList(ListAPIView):
     queryset = Emirates.objects.all()
     serializer_class = EmiratesSerializer
 
+class LicenseList(ListAPIView):
+    queryset = Emirates.objects.all()
+    serializer_class = LicenseSerializer
 
 class EmployeeList(ListAPIView):
     queryset = Employee.objects.all()

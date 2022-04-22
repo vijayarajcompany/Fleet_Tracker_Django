@@ -71,6 +71,14 @@ class EmiratesSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         return data
 
+class LicenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = License
+        fields = ('id', 'name', 'code')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        return data
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -143,7 +151,7 @@ class LocationSerializer(serializers.ModelSerializer):
 class FleetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fleet
-        fields = ('id', 'serialno','km')
+        fields = ('id', 'serialno','km','active')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
