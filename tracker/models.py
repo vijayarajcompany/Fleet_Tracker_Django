@@ -1,5 +1,7 @@
+
 from django.db import models
 import base64
+# import jsonfield
 
 
 # Create your models here.
@@ -74,10 +76,15 @@ class BrandSupplier(models.Model):
 
 class JsonPhoto(models.Model):
     photodetail = models.JSONField()
+    # photodetail = jsonfield.JSONField()
     created = models.DateTimeField(auto_now_add=True)
 
+    # def __str__(self):
+    #     return self.photodetail.value_to_string()
+
     def __str__(self):
-        return self.photodetail
+        return str(self.photodetail)
+        # return self.photodetail.format(self.Signature, self.EmiratesID)
 
 
 class BinaryPhoto(models.Model):

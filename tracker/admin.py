@@ -91,6 +91,11 @@ class LocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'created')
 
 
+class JsonPhotoAdmin(admin.ModelAdmin):
+    list_display = ('photodetail', 'created')
+
+
+admin.site.register(models.JsonPhoto, JsonPhotoAdmin)
 admin.site.register(models.Fleet, FleetAdmin)
 admin.site.register(models.Task, TaskAdmin)
 admin.site.register(models.SubTask, SubTaskAdmin)
