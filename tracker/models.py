@@ -46,8 +46,6 @@ class Fleet(models.Model):
         return str(self.serialno)
 
 
-
-
 # class SubModel(models.Model):
 #     name = models.CharField(max_length=50)
 #     model_id = models.ForeignKey(Model, on_delete=models.CASCADE, related_name="submodel")
@@ -72,6 +70,14 @@ class BrandSupplier(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class JsonPhoto(models.Model):
+    photodetail = models.JSONField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.photodetail
 
 
 class BinaryPhoto(models.Model):
@@ -126,7 +132,6 @@ class License(models.Model):
 
     def __str__(self):
         return self.code
-
 
 
 class Supplier(models.Model):
